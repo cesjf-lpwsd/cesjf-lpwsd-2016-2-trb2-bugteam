@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class Aluno {
     private String nome;
-    private List<Atividades> atividade;
+    private List<Atividade> atividade;
     private boolean isTaxaMatriculaPaga;
     private boolean isMensalidadePaga;
 
@@ -25,11 +25,11 @@ public class Aluno {
         this.nome = nome;
     }
 
-    public List<Atividades> getAtividade() {
+    public List<Atividade> getAtividade() {
         return atividade;
     }
 
-    public void setAtividade(List<Atividades> atividade) {
+    public void setAtividade(List<Atividade> atividade) {
         this.atividade = atividade;
     }
 

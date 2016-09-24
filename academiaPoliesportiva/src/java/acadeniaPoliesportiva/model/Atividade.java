@@ -9,9 +9,10 @@ package acadeniaPoliesportiva.model;
  *
  * @author aluno
  */
-class Atividades {
+class Atividade {
     private String nome;
     private float mensalidade;
+    private boolean isAtividadeAberta;
 
     public String getNome() {
         return nome;
@@ -27,6 +28,20 @@ class Atividades {
 
     public void setMensalidade(float mensalidade) {
         this.mensalidade = mensalidade;
+    }
+
+    /**
+     * @return the isAtividadeAberta
+     */
+    public boolean isIsAtividadeAberta() {
+        return isAtividadeAberta;
+    }
+
+    /**
+     * @param isAtividadeAberta the isAtividadeAberta to set
+     */
+    public void setIsAtividadeAberta(boolean isAtividadeAberta) {
+        this.isAtividadeAberta = isAtividadeAberta;
     }
     
     
