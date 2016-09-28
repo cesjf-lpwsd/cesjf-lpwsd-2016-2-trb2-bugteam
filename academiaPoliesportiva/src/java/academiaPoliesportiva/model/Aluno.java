@@ -3,19 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package acadeniaPoliesportiva.model;
+package academiaPoliesportiva.model;
 
+import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author aluno
  */
-public class Aluno {
-    private String nome;
+@Entity 
+public class Aluno implements Serializable {
+    @Id 
+    @GeneratedValue(strategy = GenerationType.AUTO) 
+    private Long id;
+    private String nome; 
     private List<Atividade> atividade;
     private boolean isTaxaMatriculaPaga;
     private boolean isMensalidadePaga;
+
+    public Aluno() {
+    }
 
     public String getNome() {
         return nome;
@@ -47,6 +59,14 @@ public class Aluno {
 
     public void setIsMensalidadePaga(boolean isMensalidadePaga) {
         this.isMensalidadePaga = isMensalidadePaga;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
      
     
