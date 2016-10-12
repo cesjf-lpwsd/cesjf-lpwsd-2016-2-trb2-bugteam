@@ -28,10 +28,11 @@ public class Mensalidade implements Serializable {
     private Aluno aluno;
     @ManyToOne
     private Atividade atividade;
-    private float manutencao = atividade.getMensalidade() / 5;
+    private float manutencao;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataVencimento;
     private boolean isFormaPagamento;
+    private double valor;
 
     public Mensalidade() {
     }      
@@ -56,6 +57,7 @@ public class Mensalidade implements Serializable {
     }
 
     public float getManutencao() {
+        // = atividade.getMensalidade() / 5
         return manutencao;
     }
 
@@ -91,6 +93,14 @@ public class Mensalidade implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setValor(double d) {
+        this.valor = d;
+    }
+
+    public double getValor() {
+        return this.valor;
     }
 
 }
