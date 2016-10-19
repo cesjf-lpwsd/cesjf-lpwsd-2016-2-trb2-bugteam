@@ -45,11 +45,7 @@ public class MensalidadeTest {
     public void testGetAluno() {
         System.out.println("getAluno");
         Mensalidade instance = new Mensalidade();
-        Aluno expResult = null;
-        Aluno result = instance.getAluno();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(null, instance.getAluno());
     }
 
     /**
@@ -58,11 +54,11 @@ public class MensalidadeTest {
     @Test
     public void testSetAluno() {
         System.out.println("setAluno");
-        Aluno aluno = null;
-        Mensalidade instance = new Mensalidade();
-        instance.setAluno(aluno);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Aluno aluno = new Aluno();
+        aluno.setNome("Bruna");
+        Mensalidade mensalidade = new Mensalidade();
+        mensalidade.setAluno(aluno);
+        assertSame(aluno, mensalidade.getAluno());
     }
 
     /**
@@ -75,8 +71,7 @@ public class MensalidadeTest {
         Atividade expResult = null;
         Atividade result = instance.getAtividade();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -86,10 +81,10 @@ public class MensalidadeTest {
     public void testSetAtividade() {
         System.out.println("setAtividade");
         Atividade atividade = null;
-        Mensalidade instance = new Mensalidade();
-        instance.setAtividade(atividade);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+         Mensalidade mensalidade = new Mensalidade();
+        mensalidade.setAtividade(atividade);
+       // instance.setAtividade(atividade);
+        assertSame(atividade, mensalidade.getAtividade());
     }
 
     /**

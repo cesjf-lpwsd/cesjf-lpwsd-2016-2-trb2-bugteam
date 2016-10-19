@@ -29,6 +29,7 @@ public class Aluno implements Serializable {
     private List<Mensalidade> mensalidades;
 
     public Aluno() {
+        nome = "";
         atividade = new ArrayList<>();
         mensalidades  =  new ArrayList<>();
     }
@@ -83,5 +84,9 @@ public class Aluno implements Serializable {
     List<Mensalidade> getMensalidades() {
        return this.mensalidades;
     }
+
+
+
+
     
 }
