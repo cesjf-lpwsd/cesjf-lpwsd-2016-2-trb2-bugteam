@@ -93,12 +93,11 @@ public class MensalidadeTest {
     @Test
     public void testGetManutencao() {
         System.out.println("getManutencao");
-        Mensalidade instance = new Mensalidade();
+        Mensalidade mensalidade = new Mensalidade();
         float expResult = 0.0F;
-        float result = instance.getManutencao();
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        mensalidade.setManutencao(expResult);
+        float result = mensalidade.getManutencao();
+        assertEquals(expResult, result, 0.000001f);
     }
 
     /**
@@ -110,8 +109,8 @@ public class MensalidadeTest {
         float manutencao = 0.0F;
         Mensalidade instance = new Mensalidade();
         instance.setManutencao(manutencao);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(manutencao, instance.getManutencao(), 0.0001f);
+
     }
 
     /**
@@ -122,10 +121,10 @@ public class MensalidadeTest {
         System.out.println("getDataVencimento");
         Mensalidade instance = new Mensalidade();
         Date expResult = null;
+        instance.setDataVencimento(expResult);
         Date result = instance.getDataVencimento();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+  
     }
 
     /**
@@ -137,8 +136,7 @@ public class MensalidadeTest {
         Date dataVencimento = null;
         Mensalidade instance = new Mensalidade();
         instance.setDataVencimento(dataVencimento);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals(dataVencimento, instance.getDataVencimento());
     }
 
     /**
@@ -151,8 +149,7 @@ public class MensalidadeTest {
         boolean expResult = false;
         boolean result = instance.isIsFormaPagamento();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
@@ -164,8 +161,6 @@ public class MensalidadeTest {
         boolean isFormaPagamento = false;
         Mensalidade instance = new Mensalidade();
         instance.setIsFormaPagamento(isFormaPagamento);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
