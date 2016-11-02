@@ -5,6 +5,7 @@
  */
 package academiaPoliesportiva.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -69,11 +70,18 @@ public class AlunoTest {
     public void testGetAtividade() {
         System.out.println("getAtividade");
         Aluno instance = new Aluno();
-        List<Atividade> expResult = null;
-        List<Atividade> result = instance.getAtividade();
-        assertEquals(expResult, result);
+        Atividade at = new Atividade();
+        at.setNome("Volei");
+        List<Atividade> lat = new ArrayList<Atividade>();
+        lat.add(at);
+        //List<Atividade> expResult = null;
+        //List<Atividade> result = instance.getAtividade();
+        lat.contains("Volei");
+        //assertEquals( lat.containsAll());
+       // assertArrayEquals("Volei", lat.);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+      
+    
     }
 
     /**
@@ -85,8 +93,6 @@ public class AlunoTest {
         List<Atividade> atividade = null;
         Aluno instance = new Aluno();
         instance.setAtividade(atividade);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -99,8 +105,6 @@ public class AlunoTest {
         boolean expResult = false;
         boolean result = instance.isIsTaxaMatriculaPaga();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -112,8 +116,6 @@ public class AlunoTest {
         boolean isTaxaMatriculaPaga = false;
         Aluno instance = new Aluno();
         instance.setIsTaxaMatriculaPaga(isTaxaMatriculaPaga);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -126,8 +128,6 @@ public class AlunoTest {
         boolean expResult = false;
         boolean result = instance.isIsMensalidadePaga();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -139,8 +139,7 @@ public class AlunoTest {
         boolean isMensalidadePaga = false;
         Aluno instance = new Aluno();
         instance.setIsMensalidadePaga(isMensalidadePaga);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
     }
 
     /**
