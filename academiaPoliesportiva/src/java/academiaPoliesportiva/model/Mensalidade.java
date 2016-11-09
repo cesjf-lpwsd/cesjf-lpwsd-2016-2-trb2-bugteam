@@ -31,6 +31,8 @@ public class Mensalidade implements Serializable {
     private float manutencao;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataVencimento;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dataPagamento;
     private boolean isFormaPagamento;
     private double valor;
 
@@ -101,6 +103,17 @@ public class Mensalidade implements Serializable {
 
     public double getValor() {
         return this.valor;
+    }
+
+    public Date getDataPagamento() {
+        return dataPagamento;
+    }
+
+    public void setDataPagamento(Date dataPagamento) {
+        this.dataPagamento = dataPagamento;
+    }
+    public boolean isPaga(){
+        return this.dataPagamento!=null;
     }
 
 }

@@ -7,6 +7,7 @@ package academiaPoliesportiva.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,6 +27,7 @@ public class Aluno implements Serializable {
     private List<Atividade> atividade;
     private boolean isTaxaMatriculaPaga;
     private boolean isMensalidadePaga;
+    private boolean isApto; //implementar
     private List<Mensalidade> mensalidades;
 
     public Aluno() {
@@ -33,7 +35,11 @@ public class Aluno implements Serializable {
         atividade = new ArrayList<>();
         mensalidades  =  new ArrayList<>();
     }
-
+    
+    public Aluno(String nome, Atividade atividade){
+        
+       
+    }
     public String getNome() {
         return nome;
     }
@@ -73,7 +79,12 @@ public class Aluno implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public boolean isIsApto() {
+        return isApto;
+    }
      
+    
     public void matricula(Atividade atv){
         this.getAtividade().add(atv);
         Mensalidade nMensa = new Mensalidade();
@@ -83,6 +94,11 @@ public class Aluno implements Serializable {
 
     List<Mensalidade> getMensalidades() {
        return this.mensalidades;
+    }
+
+    void paga(Mensalidade msl) {
+        msl.setDataPagamento(new Date());
+    
     }
 
 

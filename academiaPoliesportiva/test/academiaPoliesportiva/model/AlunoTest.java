@@ -204,7 +204,19 @@ public class AlunoTest {
         atv.setMensalidade(100.0f);
         a.matricula(atv);
         Mensalidade nm = a.getMensalidades().get(0);
+
+        assertFalse(nm.isPaga());
+    }
+    @Test
+    public void testMensalidadePaga(){
+        System.out.println("matricula paga%");
+        Aluno a = new Aluno();
+        Atividade atv = new Atividade();
         
-        assertEquals(150.0d, nm.getValor(),0.0001d);
+        atv.setMensalidade(100.0f);
+        a.matricula(atv);
+        Mensalidade nm = a.getMensalidades().get(0);
+        a.paga(nm);
+        assertTrue(nm.isPaga());
     }
 }
