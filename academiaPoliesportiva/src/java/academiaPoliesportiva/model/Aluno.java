@@ -89,6 +89,10 @@ public class Aluno implements Serializable {
         this.getAtividade().add(atv);
         Mensalidade nMensa = new Mensalidade();
         nMensa.setValor(atv.getMensalidade()*1.5);
+        nMensa.setAluno(this);
+        nMensa.setDataPagamento(new Date());
+        nMensa.setDataVencimento(new Date());//adicionar 1 mes apos a data de pagamento
+        this.isTaxaMatriculaPaga=true;
         this.getMensalidades().add(nMensa);
     }
 

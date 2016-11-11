@@ -59,7 +59,7 @@ public class Mensalidade implements Serializable {
     }
 
     public float getManutencao() {
-        // = atividade.getMensalidade() / 5
+        this.manutencao = atividade.getMensalidade() / 5;
         return manutencao;
     }
 
