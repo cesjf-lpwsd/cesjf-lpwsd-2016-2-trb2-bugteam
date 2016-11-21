@@ -29,6 +29,7 @@ public class Aluno implements Serializable {
     private boolean isMensalidadePaga;
     private boolean isApto; //implementar
     private List<Mensalidade> mensalidades;
+    private String testt;
 
     public Aluno() {
         nome = "";
@@ -103,6 +104,14 @@ public class Aluno implements Serializable {
     void paga(Mensalidade msl) {
         msl.setDataPagamento(new Date());
     
+    }
+
+    public String getTestt() {
+        return testt;
+    }
+
+    public void setTestt(String testt) {
+        this.testt = testt;
     }
 
 

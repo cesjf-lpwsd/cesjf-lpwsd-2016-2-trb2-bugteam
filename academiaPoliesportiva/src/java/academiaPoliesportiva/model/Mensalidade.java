@@ -39,6 +39,8 @@ public class Mensalidade implements Serializable {
     public Mensalidade() {
     }      
     public Mensalidade(Aluno a, Atividade b) {
+        this.aluno=a;
+        this.atividade=b;
     }
     
     
