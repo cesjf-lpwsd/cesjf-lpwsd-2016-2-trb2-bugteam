@@ -6,10 +6,12 @@
 package academiaPoliesportiva.model;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -23,6 +25,8 @@ public class Atividade implements Serializable {
     private String nome;
     private float mensalidade;
     private boolean isAtividadeAberta;
+    @ManyToMany(mappedBy = "atividade")
+    private List<Aluno> alunos;
 
     public Atividade() {
     }
@@ -64,6 +68,14 @@ public class Atividade implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(List<Aluno> alunos) {
+        this.alunos = alunos;
     }
 
 

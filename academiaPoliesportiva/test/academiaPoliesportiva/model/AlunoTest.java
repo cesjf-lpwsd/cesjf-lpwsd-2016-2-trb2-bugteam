@@ -92,7 +92,7 @@ public class AlunoTest {
         System.out.println("setAtividade");
         List<Atividade> atividade = null;
         Aluno instance = new Aluno();
-        instance.setAtividade(atividade);
+        instance.setAtividades(atividade);
     }
 
     /**
@@ -173,7 +173,7 @@ public class AlunoTest {
         Aluno a = new Aluno();
         Atividade atv = new Atividade();
         a.matricula(atv);
-        assertTrue(a.getAtividade().contains(atv));
+        assertTrue(a.getAtividades().contains(atv));
     }
     @Test
     public void testMatriculaMensalidade(){
@@ -182,7 +182,7 @@ public class AlunoTest {
         Atividade atv = new Atividade();
         a.matricula(atv);
         assertEquals(1, a.getMensalidades().size());
-        assertTrue(a.getAtividade().contains(atv));
+        assertTrue(a.getAtividades().contains(atv));
     }
     @Test
     public void testMatriculaMensalidadePrimeiroValor(){

@@ -13,34 +13,38 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author aluno
  */
-@Entity 
+@Entity
 public class Aluno implements Serializable {
-    @Id 
-    @GeneratedValue(strategy = GenerationType.AUTO) 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String nome; 
-    private List<Atividade> atividade;
+    private String nome;
+    @ManyToMany
+    private List<Atividade> atividades;//ver com igor se deve fazer uma nova tabela/ classe Aluno_atividade
     private boolean isTaxaMatriculaPaga;
     private boolean isMensalidadePaga;
     private boolean isApto; //implementar
-    private List<Mensalidade> mensalidades;
-    private String testt;
+    @OneToMany
+    private List<Mensalidade> mensalidades;//ver com igor se deve fazer uma nova tabela/ classe Aluno_mensalidade
 
     public Aluno() {
         nome = "";
-        atividade = new ArrayList<>();
-        mensalidades  =  new ArrayList<>();
+        atividades = new ArrayList<>();
+        mensalidades = new ArrayList<>();
     }
-    
-    public Aluno(String nome, Atividade atividade){
-        
-       
+
+    public Aluno(String nome, Atividade atividade) {
+
     }
+
     public String getNome() {
         return nome;
     }
@@ -49,12 +53,12 @@ public class Aluno implements Serializable {
         this.nome = nome;
     }
 
-    public List<Atividade> getAtividade() {
-        return atividade;
+    public List<Atividade> getAtividades() {
+        return atividades;
     }
 
-    public void setAtividade(List<Atividade> atividade) {
-        this.atividade = atividade;
+    public void setAtividades(List<Atividade> atividades) {
+        this.atividades = atividades;
     }
 
     public boolean isIsTaxaMatriculaPaga() {
@@ -84,38 +88,24 @@ public class Aluno implements Serializable {
     public boolean isIsApto() {
         return isApto;
     }
-     
-    
-    public void matricula(Atividade atv){
-        this.getAtividade().add(atv);
+
+    public void matricula(Atividade atv) {
+        this.getAtividades().add(atv);
         Mensalidade nMensa = new Mensalidade();
-        nMensa.setValor(atv.getMensalidade()*1.5);
+        nMensa.setValor(atv.getMensalidade() * 1.5);
         nMensa.setAluno(this);
         nMensa.setDataPagamento(new Date());
         nMensa.setDataVencimento(new Date());//adicionar 1 mes apos a data de pagamento
-        this.isTaxaMatriculaPaga=true;
+        this.isTaxaMatriculaPaga = true;
         this.getMensalidades().add(nMensa);
     }
 
     List<Mensalidade> getMensalidades() {
-       return this.mensalidades;
+        return this.mensalidades;
     }
 
     void paga(Mensalidade msl) {
         msl.setDataPagamento(new Date());
-    
+
     }
-
-    public String getTestt() {
-        return testt;
-    }
-
-    public void setTestt(String testt) {
-        this.testt = testt;
-    }
-
-
-
-
-    
 }
