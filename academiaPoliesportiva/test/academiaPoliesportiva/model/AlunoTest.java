@@ -103,7 +103,7 @@ public class AlunoTest {
         System.out.println("isIsTaxaMatriculaPaga");
         Aluno instance = new Aluno();
         boolean expResult = false;
-        boolean result = instance.isIsTaxaMatriculaPaga();
+        boolean result = instance.isTaxaMatriculaPaga();
         assertEquals(expResult, result);
     }
 
@@ -115,7 +115,7 @@ public class AlunoTest {
         System.out.println("setIsTaxaMatriculaPaga");
         boolean isTaxaMatriculaPaga = false;
         Aluno instance = new Aluno();
-        instance.setIsTaxaMatriculaPaga(isTaxaMatriculaPaga);
+        instance.setTaxaMatriculaPaga(isTaxaMatriculaPaga);
     }
 
     /**
@@ -126,7 +126,7 @@ public class AlunoTest {
         System.out.println("isIsMensalidadePaga");
         Aluno instance = new Aluno();
         boolean expResult = false;
-        boolean result = instance.isIsMensalidadePaga();
+        boolean result = instance.isMensalidadePaga();
         assertEquals(expResult, result);
     }
 
@@ -138,7 +138,7 @@ public class AlunoTest {
         System.out.println("setIsMensalidadePaga");
         boolean isMensalidadePaga = false;
         Aluno instance = new Aluno();
-        instance.setIsMensalidadePaga(isMensalidadePaga);
+        instance.setMensalidadePaga(isMensalidadePaga);
 
     }
 

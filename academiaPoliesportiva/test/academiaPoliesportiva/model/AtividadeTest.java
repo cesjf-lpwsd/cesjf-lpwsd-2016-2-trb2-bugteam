@@ -93,7 +93,7 @@ public class AtividadeTest {
         System.out.println("isIsAtividadeAberta");
         Atividade instance = new Atividade();
         boolean expResult = false;
-        boolean result = instance.isIsAtividadeAberta();
+        boolean result = instance.isAtividadeAberta();
         assertEquals(expResult, result);
 
     }
@@ -106,7 +106,7 @@ public class AtividadeTest {
         System.out.println("setIsAtividadeAberta");
         boolean isAtividadeAberta = false;
         Atividade instance = new Atividade();
-        instance.setIsAtividadeAberta(isAtividadeAberta);
+        instance.setAtividadeAberta(isAtividadeAberta);
         
     }
 

@@ -29,9 +29,9 @@ public class Aluno implements Serializable {
     private String nome;
     @ManyToMany
     private List<Atividade> atividades;//ver com igor se deve fazer uma nova tabela/ classe Aluno_atividade
-    private boolean isTaxaMatriculaPaga;
-    private boolean isMensalidadePaga;
-    private boolean isApto; //implementar
+    private boolean taxaMatriculaPaga;
+    private boolean mensalidadePaga;
+    private boolean apto; //implementar
     @OneToMany
     private List<Mensalidade> mensalidades;//ver com igor se deve fazer uma nova tabela/ classe Aluno_mensalidade
 
@@ -61,20 +61,20 @@ public class Aluno implements Serializable {
         this.atividades = atividades;
     }
 
-    public boolean isIsTaxaMatriculaPaga() {
-        return isTaxaMatriculaPaga;
+    public boolean isTaxaMatriculaPaga() {
+        return taxaMatriculaPaga;
     }
 
-    public void setIsTaxaMatriculaPaga(boolean isTaxaMatriculaPaga) {
-        this.isTaxaMatriculaPaga = isTaxaMatriculaPaga;
+    public void setTaxaMatriculaPaga(boolean taxaMatriculaPaga) {
+        this.taxaMatriculaPaga = taxaMatriculaPaga;
     }
 
-    public boolean isIsMensalidadePaga() {
-        return isMensalidadePaga;
+    public boolean isMensalidadePaga() {
+        return mensalidadePaga;
     }
 
-    public void setIsMensalidadePaga(boolean isMensalidadePaga) {
-        this.isMensalidadePaga = isMensalidadePaga;
+    public void setMensalidadePaga(boolean mensalidadePaga) {
+        this.mensalidadePaga = mensalidadePaga;
     }
 
     public Long getId() {
@@ -85,8 +85,8 @@ public class Aluno implements Serializable {
         this.id = id;
     }
 
-    public boolean isIsApto() {
-        return isApto;
+    public boolean isApto() {
+        return apto;
     }
 
     public void matricula(Atividade atv) {
@@ -96,7 +96,7 @@ public class Aluno implements Serializable {
         nMensa.setAluno(this);
         nMensa.setDataPagamento(new Date());
         nMensa.setDataVencimento(new Date());//adicionar 1 mes apos a data de pagamento
-        this.isTaxaMatriculaPaga = true;
+        this.taxaMatriculaPaga = true;
         this.getMensalidades().add(nMensa);
     }
 

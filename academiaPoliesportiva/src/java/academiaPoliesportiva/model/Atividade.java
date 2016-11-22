@@ -24,8 +24,8 @@ public class Atividade implements Serializable {
     private Long id;
     private String nome;
     private float mensalidade;
-    private boolean isAtividadeAberta;
-    @ManyToMany(mappedBy = "atividade")
+    private boolean atividadeAberta;
+    @ManyToMany(mappedBy = "atividades")
     private List<Aluno> alunos;
 
     public Atividade() {
@@ -49,17 +49,17 @@ public class Atividade implements Serializable {
     }
 
     /**
-     * @return the isAtividadeAberta
+     * @return the atividadeAberta
      */
-    public boolean isIsAtividadeAberta() {
-        return isAtividadeAberta;
+    public boolean isAtividadeAberta() {
+        return atividadeAberta;
     }
 
     /**
-     * @param isAtividadeAberta the isAtividadeAberta to set
+     * @param atividadeAberta the atividadeAberta to set
      */
-    public void setIsAtividadeAberta(boolean isAtividadeAberta) {
-        this.isAtividadeAberta = isAtividadeAberta;
+    public void setAtividadeAberta(boolean atividadeAberta) {
+        this.atividadeAberta = atividadeAberta;
     }
 
     public Long getId() {
