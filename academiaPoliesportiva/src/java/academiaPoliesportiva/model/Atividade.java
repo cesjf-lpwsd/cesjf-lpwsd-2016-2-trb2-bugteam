@@ -77,8 +77,4 @@ public class Atividade implements Serializable {
     public void setAlunos(List<Aluno> alunos) {
         this.alunos = alunos;
     }
-
-
-    
-    
 }
