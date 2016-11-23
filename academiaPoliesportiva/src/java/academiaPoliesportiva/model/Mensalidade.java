@@ -6,7 +6,6 @@
 package academiaPoliesportiva.model;
 
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,39 +19,31 @@ import javax.persistence.Temporal;
  *
  * @author aluno
  */
-@Entity
+@Entity 
 public class Mensalidade implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id 
+    @GeneratedValue(strategy = GenerationType.AUTO) 
     private Long id;
-    
-    @ManyToOne
+    @OneToOne
     private Aluno aluno;
-    
+    @ManyToOne
     private Atividade atividade;
     private float manutencao;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataVencimento;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataPagamento;
-    private boolean formaPagamento;
+    private boolean isFormaPagamento;
     private double valor;
-  
-    
+
     public Mensalidade() {
+    }      
+    public Mensalidade(Aluno a, Atividade b) {
+        this.aluno=a;
+        this.atividade=b;
     }
-
-    public Mensalidade(Aluno a, Atividade b) {// criar mensalidade
-        this.aluno = a;
-        this.atividade = b;
-    }
-     void paga(Aluno a) {
-        this.setDataPagamento(new Date());
-
-
-    }
-
+    
+    
     public Aluno getAluno() {
         return aluno;
     }
@@ -89,15 +80,15 @@ public class Mensalidade implements Serializable {
     /**
      * @return the FormaPagamento
      */
-    public boolean isFormaPagamento() {
-        return formaPagamento;
+    public boolean isIsFormaPagamento() {
+        return isFormaPagamento;
     }
 
     /**
-     * @param formaPagamento the FormaPagamento to set
+     * @param isFormaPagamento the FormaPagamento to set
      */
-    public void setFormaPagamento(boolean formaPagamento) {
-        this.formaPagamento = formaPagamento;
+    public void setIsFormaPagamento(boolean isFormaPagamento) {
+        this.isFormaPagamento = isFormaPagamento;
     }
 
     public Long getId() {
@@ -122,6 +113,9 @@ public class Mensalidade implements Serializable {
 
     public void setDataPagamento(Date dataPagamento) {
         this.dataPagamento = dataPagamento;
+    }
+    public boolean isPaga(){
+        return this.dataPagamento!=null;
     }
 
 }

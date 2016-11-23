@@ -147,7 +147,7 @@ public class MensalidadeTest {
         System.out.println("isIsFormaPagamento");
         Mensalidade instance = new Mensalidade();
         boolean expResult = false;
-        boolean result = instance.isFormaPagamento();
+        boolean result = instance.isIsFormaPagamento();
         assertEquals(expResult, result);
 
     }
@@ -160,7 +160,7 @@ public class MensalidadeTest {
         System.out.println("setIsFormaPagamento");
         boolean isFormaPagamento = false;
         Mensalidade instance = new Mensalidade();
-        instance.setFormaPagamento(isFormaPagamento);
+        instance.setIsFormaPagamento(isFormaPagamento);
     }
 
     /**
