@@ -94,12 +94,9 @@ public class Aluno implements Serializable {
         this.id = id;
     }
 
-    public boolean isApto() {
-        return apto;
-    }
-
     List<Mensalidade> getMensalidades() {
         return this.mensalidades;
     }
 
+    
 }
