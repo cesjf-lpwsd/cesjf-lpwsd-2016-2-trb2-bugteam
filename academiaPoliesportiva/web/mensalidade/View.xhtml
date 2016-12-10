@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMensalidadeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewMensalidadeLabel_aluno}"/>
+                    <h:outputText value="#{mensalidadeController.selected.aluno}" title="#{bundle.ViewMensalidadeTitle_aluno}"/>
+                    <h:outputText value="#{bundle.ViewMensalidadeLabel_atividade}"/>
+                    <h:outputText value="#{mensalidadeController.selected.atividade}" title="#{bundle.ViewMensalidadeTitle_atividade}"/>
+                    <h:outputText value="#{bundle.ViewMensalidadeLabel_manutencao}"/>
+                    <h:outputText value="#{mensalidadeController.selected.manutencao}" title="#{bundle.ViewMensalidadeTitle_manutencao}"/>
+                    <h:outputText value="#{bundle.ViewMensalidadeLabel_dataVencimento}"/>
+                    <h:outputText value="#{mensalidadeController.selected.dataVencimento}" title="#{bundle.ViewMensalidadeTitle_dataVencimento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewMensalidadeLabel_id}"/>
+                    <h:outputText value="#{mensalidadeController.selected.id}" title="#{bundle.ViewMensalidadeTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewMensalidadeLabel_valor}"/>
+                    <h:outputText value="#{mensalidadeController.selected.valor}" title="#{bundle.ViewMensalidadeTitle_valor}"/>
+                    <h:outputText value="#{bundle.ViewMensalidadeLabel_dataPagamento}"/>
+                    <h:outputText value="#{mensalidadeController.selected.dataPagamento}" title="#{bundle.ViewMensalidadeTitle_dataPagamento}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{mensalidadeController.destroyAndView}" value="#{bundle.ViewMensalidadeDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewMensalidadeEditLink}"/>
+                <br />
+                <h:commandLink action="#{mensalidadeController.prepareCreate}" value="#{bundle.ViewMensalidadeCreateLink}" />
+                <br />
+                <h:commandLink action="#{mensalidadeController.prepareList}" value="#{bundle.ViewMensalidadeShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewMensalidadeIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

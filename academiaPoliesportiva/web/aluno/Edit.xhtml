@@ -15,19 +15,19 @@
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
-                    <h:selectOneMenu id="selectAluno"
-                    value="#{alunoController.alunoAtual}">
-                        <f:selectItems value="#{alunoController.itemsAvailableSelectOne}" />
-                    </h:selectOneMenu>
-                    <h:selectOneMenu id="selectAtividade"
-                                     value="#{alunoController.atividadeAtual}">
-                        <f:selectItems value="#{atividadeController.itemsAvailableSelectOne}" />
-                    </h:selectOneMenu>
-
+                    <h:outputLabel value="#{bundle.EditAlunoLabel_nome}" for="nome" />
+                    <h:inputText id="nome" value="#{alunoController.selected.nome}" title="#{bundle.EditAlunoTitle_nome}" />
+                    <h:outputLabel value="#{bundle.EditAlunoLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{alunoController.selected.id}" title="#{bundle.EditAlunoTitle_id}" />
                 </h:panelGrid>
-                <h:commandLink action="#{alunoController.matricular}" value="#{bundle.Matricular}"/>
+                <h:commandLink action="#{alunoController.update}" value="#{bundle.EditAlunoSaveLink}"/>
                 <br />
-               
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAlunoViewLink}"/>
+                <br />
+                <h:commandLink action="#{alunoController.prepareList}" value="#{bundle.EditAlunoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
                 <h:link outcome="/index" value="#{bundle.EditAlunoIndexLink}" />
             </h:form>
         </ui:define>
