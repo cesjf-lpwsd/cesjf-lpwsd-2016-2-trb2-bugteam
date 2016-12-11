@@ -21,17 +21,12 @@
                     <h:inputText id="mensalidade" value="#{atividadeController.selected.mensalidade}" title="#{bundle.CreateAtividadeTitle_mensalidade}" />
                     <h:outputLabel value="#{bundle.CreateAtividadeLabel_aberta}" for="abcd" />
                     <h:selectBooleanCheckbox id="abcd" value="#{atividadeController.selected.atividadeAberta}"></h:selectBooleanCheckbox>
-                    <h:outputLabel value="#{bundle.CreateAtividadeLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{atividadeController.selected.id}" title="#{bundle.CreateAtividadeTitle_id}" />
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{atividadeController.create}" value="#{bundle.CreateAtividadeSaveLink}" />
                 <br />
                 <br />
-                <h:commandLink action="#{atividadeController.prepareList}" value="#{bundle.CreateAtividadeShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateAtividadeIndexLink}"/>
+                <h:link outcome="/index" value="#{bundle.MenuPrincipal}"/>
             </h:form>
         </ui:define>
     </ui:composition>

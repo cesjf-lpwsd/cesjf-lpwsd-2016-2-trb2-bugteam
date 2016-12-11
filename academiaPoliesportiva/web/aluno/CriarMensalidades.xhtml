@@ -22,28 +22,15 @@
                     <h:outputLabel value="#{bundle.CreateMensalidadeLabel_atividade}" for="atividade" />
                     <h:outputText value="#{alunoController.selected.id}" title="#{bundle.ViewAlunoTitle_nome}"/>
                     
-                    <h:outputLabel value="#{bundle.CreateMensalidadeLabel_dataVencimento}" for="dataVencimento" />
-                    <h:inputText id="dataVencimento" value="#{mensalidadeController.selected.dataVencimento}" title="#{bundle.CreateMensalidadeTitle_dataVencimento}" >
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
-
                     <h:outputLabel value="#{bundle.CreateMensalidadeLabel_valor}" for="valor" />
-                    
                     <h:inputText id="valor" value="#{mensalidadeController.selected.valor}" title="#{bundle.CreateMensalidadeTitle_valor}" />
-                    
-                    <h:outputLabel value="#{bundle.CreateMensalidadeLabel_dataPagamento}" for="dataPagamento" />
-                    <h:inputText id="dataPagamento" value="#{mensalidadeController.selected.dataPagamento}" title="#{bundle.CreateMensalidadeTitle_dataPagamento}" >
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </h:inputText>
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{mensalidadeController.create}" value="#{bundle.CreateMensalidadeSaveLink}" />
                 <br />
+      
                 <br />
-                <h:commandLink action="#{mensalidadeController.prepareList}" value="#{bundle.CreateMensalidadeShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateMensalidadeIndexLink}"/>
+                <h:link outcome="/index" value="#{bundle.MenuPrincipal}"/>
             </h:form>
         </ui:define>
     </ui:composition>

@@ -17,17 +17,13 @@
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.CreateAlunoLabel_nome}" for="nome" />
                     <h:inputText id="nome" value="#{alunoController.selected.nome}" title="#{bundle.CreateAlunoTitle_nome}" />
-                    <h:outputLabel value="#{bundle.CreateAlunoLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{alunoController.selected.id}" title="#{bundle.CreateAlunoTitle_id}" />
                 </h:panelGrid>
                 <br />
                 <h:commandLink action="#{alunoController.create}" value="#{bundle.CreateAlunoSaveLink}" />
                 <br />
+  
                 <br />
-                <h:commandLink action="#{alunoController.prepareList}" value="#{bundle.CreateAlunoShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.CreateAlunoIndexLink}"/>
+                <h:link outcome="/index" value="#{bundle.MenuPrincipal}"/>
             </h:form>
         </ui:define>
     </ui:composition>

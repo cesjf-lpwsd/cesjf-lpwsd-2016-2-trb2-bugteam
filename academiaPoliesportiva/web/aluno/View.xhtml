@@ -19,20 +19,16 @@
                     <h:outputText value="#{alunoController.selected.nome}" title="#{bundle.ViewAlunoTitle_nome}"/>
                     
                     <h:outputText value="#{bundle.ViewAlunoLabel_id}"/>
-                    <h:outputText value="#{atividadeController.setCurrent(atividadeAtual)}" title="#{bundle.ViewAlunoTitle_id}"/>
-
+                    <h:outputText value="#{alunoController.selected.id}" title="#{bundle.ViewAlunoTitle_id}"/>
+                </h:panelGrid>
                     <h:outputText value="Atividades:"/>
                     <br />
                     <h:panelGrid columns="1">
                     <h:dataTable value="#{alunoController.selected.atividades}" var="item" border="0" cellpadding="1" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
-
                             <h:outputText value="#{item.nome}"/>
                         </h:column>
                         <h:column>
-                               <f:facet name="header">
-                                <h:outputText value="&nbsp;"/>
-                            </f:facet>
                             <h:commandLink action="#{alunoController.prepareListMensalidades}" value="Ver Mensalidades"/>
                             <h:outputText value=" "/>
                             <h:commandLink action="#{alunoController.prepareCreateMensalidades}" value="Pagar Mensalidades"/>
@@ -42,21 +38,7 @@
                         
                 </h:panelGrid>
                 
-                </h:panelGrid>
-                
-              
-                <br />
-                <h:commandLink action="#{alunoController.destroyAndView}" value="#{bundle.ViewAlunoDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewAlunoEditLink}"/>
-                <br />
-                <h:commandLink action="#{alunoController.prepareCreate}" value="#{bundle.ViewAlunoCreateLink}" />
-                <br />
-                <h:commandLink action="#{alunoController.prepareList}" value="#{bundle.ViewAlunoShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewAlunoIndexLink}"/>
+                <h:link outcome="/index" value="#{bundle.MenuPrincipal}"/>
 
             </h:form>
         </ui:define>

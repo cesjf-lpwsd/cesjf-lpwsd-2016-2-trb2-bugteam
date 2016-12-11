@@ -23,17 +23,7 @@
                     <h:outputText value="#{atividadeController.selected.id}" title="#{bundle.ViewAtividadeTitle_id}"/>
                 </h:panelGrid>
                 <br />
-                <h:commandLink action="#{atividadeController.destroyAndView}" value="#{bundle.ViewAtividadeDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewAtividadeEditLink}"/>
-                <br />
-                <h:commandLink action="#{atividadeController.prepareCreate}" value="#{bundle.ViewAtividadeCreateLink}" />
-                <br />
-                <h:commandLink action="#{atividadeController.prepareList}" value="#{bundle.ViewAtividadeShowAllLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ViewAtividadeIndexLink}"/>
+                <h:link outcome="/index" value="#{bundle.MenuPrincipal}"/>
 
             </h:form>
         </ui:define>

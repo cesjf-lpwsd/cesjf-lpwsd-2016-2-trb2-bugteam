@@ -22,13 +22,7 @@
                 </h:panelGrid>
                 <h:commandLink action="#{alunoController.update}" value="#{bundle.EditAlunoSaveLink}"/>
                 <br />
-                <br />
-                <h:link outcome="View" value="#{bundle.EditAlunoViewLink}"/>
-                <br />
-                <h:commandLink action="#{alunoController.prepareList}" value="#{bundle.EditAlunoShowAllLink}" immediate="true"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.EditAlunoIndexLink}" />
+                <h:link outcome="/index" value="#{bundle.MenuPrincipal}" />
             </h:form>
         </ui:define>
     </ui:composition>

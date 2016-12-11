@@ -20,7 +20,6 @@
                     <h:commandLink action="#{mensalidadeController.previous}" value="#{bundle.Previous} #{mensalidadeController.pagination.pageSize}" rendered="#{mensalidadeController.pagination.hasPreviousPage}"/>&nbsp;
                     <h:commandLink action="#{mensalidadeController.next}" value="#{bundle.Next} #{mensalidadeController.pagination.pageSize}" rendered="#{mensalidadeController.pagination.hasNextPage}"/>&nbsp;
                     <h:dataTable value="#{mensalidadeController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                      if(item.id==atividadeController.selected)
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListMensalidadeTitle_id}"/>
@@ -84,10 +83,7 @@
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{mensalidadeController.prepareCreate}" value="#{bundle.ListMensalidadeCreateLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListMensalidadeIndexLink}"/>
+                <h:link outcome="/index" value="#{bundle.MenuPrincipal}"/>
             </h:form>
         </ui:define>
     </ui:composition>

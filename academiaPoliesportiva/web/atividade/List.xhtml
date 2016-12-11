@@ -42,19 +42,16 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{atividadeController.prepareView}" value="#{bundle.ListAtividadeViewLink}"/>
+                            <h:commandLink action="#{atividadeController.prepareView}" value="#{bundle.Ver}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{atividadeController.prepareEdit}" value="#{bundle.ListAtividadeEditLink}"/>
+                            <h:commandLink action="#{atividadeController.prepareEdit}" value="#{bundle.Modificar}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{atividadeController.destroy}" value="#{bundle.ListAtividadeDestroyLink}"/>
+                            <h:commandLink action="#{atividadeController.destroy}" value="#{bundle.Apagar}"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{atividadeController.prepareCreate}" value="#{bundle.ListAtividadeCreateLink}"/>
-                <br />
-                <br />
-                <h:link outcome="/index" value="#{bundle.ListAtividadeIndexLink}"/>
+                <h:link outcome="/index" value="#{bundle.MenuPrincipal}"/>
             </h:form>
         </ui:define>
     </ui:composition>
