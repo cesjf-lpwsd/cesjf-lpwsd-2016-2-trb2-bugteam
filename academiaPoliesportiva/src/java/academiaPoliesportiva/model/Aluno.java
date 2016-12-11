@@ -7,10 +7,14 @@ package academiaPoliesportiva.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,27 +32,24 @@ public class Aluno implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nome;
-    @ManyToMany
+    @ManyToMany( fetch = FetchType.EAGER)
     private List<Atividade> atividades;
-    private boolean taxaMatriculaPaga;
-    private boolean mensalidadePaga;
-    private boolean apto; //implementar
     @OneToMany(cascade = CascadeType.REMOVE)
     private final List<Mensalidade> mensalidades;
+    
     public Aluno() {
         nome = "";
         atividades = new ArrayList<>();
         mensalidades = new ArrayList<>();
     }
-
     public void matricula(Atividade atv) {
         this.getAtividades().add(atv);
         Mensalidade nMensa = new Mensalidade();
+        nMensa.setAtividade(atv);
         nMensa.setValor(atv.getMensalidade() * 1.5);
         nMensa.setAluno(this);
         nMensa.setDataPagamento(new Date());
         nMensa.setDataVencimento(new Date());//adicionar 1 mes apos a data de pagamento
-        this.taxaMatriculaPaga = true;
         this.getMensalidades().add(nMensa);
     }
 
@@ -70,22 +71,6 @@ public class Aluno implements Serializable {
         this.atividades = atividades;
     }
 
-    public boolean isTaxaMatriculaPaga() {
-        return taxaMatriculaPaga;
-    }
-
-    public void setTaxaMatriculaPaga(boolean taxaMatriculaPaga) {
-        this.taxaMatriculaPaga = taxaMatriculaPaga;
-    }
-
-    public boolean isMensalidadePaga() {
-        return mensalidadePaga;
-    }
-
-    public void setMensalidadePaga(boolean mensalidadePaga) {
-        this.mensalidadePaga = mensalidadePaga;
-    }
-
     public Long getId() {
         return id;
     }
@@ -97,6 +82,39 @@ public class Aluno implements Serializable {
     List<Mensalidade> getMensalidades() {
         return this.mensalidades;
     }
+
+    @Override
+    public String toString() {
+        return nome ;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Aluno other = (Aluno) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+  
+   
 
     
 }

@@ -8,6 +8,7 @@ package academiaPoliesportiva.model;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,6 +31,7 @@ public class Mensalidade implements Serializable {
     @ManyToOne
     private Aluno aluno;
     
+    @OneToOne
     private Atividade atividade;
     private float manutencao;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -70,7 +72,7 @@ public class Mensalidade implements Serializable {
     }
 
     public float getManutencao() {
-        this.manutencao = atividade.getMensalidade() / 5;
+        this.manutencao = (float) (getValor() *0.2);
         return manutencao;
     }
 
@@ -83,7 +85,14 @@ public class Mensalidade implements Serializable {
     }
 
     public void setDataVencimento(Date dataVencimento) {
-        this.dataVencimento = dataVencimento;
+        Date d =new Date();
+           Calendar c = Calendar.getInstance();
+                  c.setTime(d);
+                  c.set(Calendar.MONTH, c.get(Calendar.MONTH) + 1);
+        
+
+        
+        this.dataVencimento = c.getTime();
     }
 
     /**
@@ -121,7 +130,33 @@ public class Mensalidade implements Serializable {
     }
 
     public void setDataPagamento(Date dataPagamento) {
-        this.dataPagamento = dataPagamento;
+      
+        this.dataPagamento = new Date();
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Mensalidade other = (Mensalidade) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
 
 }

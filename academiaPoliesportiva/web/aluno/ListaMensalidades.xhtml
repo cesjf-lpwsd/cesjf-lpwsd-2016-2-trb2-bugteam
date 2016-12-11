@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMensalidadeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMensalidadeEmpty}" rendered="#{mensalidadeController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{mensalidadeController.items.rowCount > 0}">
+                    <h:outputText value="#{mensalidadeController.pagination.pageFirstItem + 1}..#{mensalidadeController.pagination.pageLastItem + 1}/#{mensalidadeController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{mensalidadeController.previous}" value="#{bundle.Previous} #{mensalidadeController.pagination.pageSize}" rendered="#{mensalidadeController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{mensalidadeController.next}" value="#{bundle.Next} #{mensalidadeController.pagination.pageSize}" rendered="#{mensalidadeController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{mensalidadeController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                      if(item.id==atividadeController.selected)
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMensalidadeTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMensalidadeTitle_aluno}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.aluno}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMensalidadeTitle_atividade}"/>
+                            </f:facet>
+                            <h:outputText value="#{atividadeController.selected.nome}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMensalidadeTitle_valor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.valor}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMensalidadeTitle_manutencao}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.manutencao}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMensalidadeTitle_dataPagamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataPagamento}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMensalidadeTitle_dataVencimento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataVencimento}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </h:column>
+
+
+
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{mensalidadeController.prepareView}" value="#{bundle.ListMensalidadeViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{mensalidadeController.prepareEdit}" value="#{bundle.ListMensalidadeEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{mensalidadeController.destroy}" value="#{bundle.ListMensalidadeDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{mensalidadeController.prepareCreate}" value="#{bundle.ListMensalidadeCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListMensalidadeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

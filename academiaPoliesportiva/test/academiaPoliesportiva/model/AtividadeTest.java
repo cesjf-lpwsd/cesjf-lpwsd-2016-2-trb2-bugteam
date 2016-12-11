@@ -59,6 +59,7 @@ public class AtividadeTest {
         String nome = "";
         Atividade instance = new Atividade();
         instance.setNome(nome);
+        assertEquals("", instance.getNome());
     }
 
     /**
@@ -81,8 +82,10 @@ public class AtividadeTest {
         System.out.println("setMensalidade");
         float mensalidade = 0.0F;
         Atividade instance = new Atividade();
+        
         instance.setMensalidade(mensalidade);
-
+        
+        assertEquals(mensalidade, instance.getMensalidade(),0000000.1F);
     }
 
     /**
@@ -92,7 +95,8 @@ public class AtividadeTest {
     public void testIsIsAtividadeAberta() {
         System.out.println("isIsAtividadeAberta");
         Atividade instance = new Atividade();
-        boolean expResult = false;
+        instance.setAtividadeAberta(true);
+        boolean expResult = true;
         boolean result = instance.isAtividadeAberta();
         assertEquals(expResult, result);
 
@@ -104,9 +108,10 @@ public class AtividadeTest {
     @Test
     public void testSetIsAtividadeAberta() {
         System.out.println("setIsAtividadeAberta");
-        boolean isAtividadeAberta = false;
+
         Atividade instance = new Atividade();
-        instance.setAtividadeAberta(isAtividadeAberta);
+        instance.setAtividadeAberta(true);
+        assertTrue(instance.isAtividadeAberta());
         
     }
 

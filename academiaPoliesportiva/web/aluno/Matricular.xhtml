@@ -23,7 +23,7 @@
                                      value="#{alunoController.atividadeAtual}">
                         <f:selectItems value="#{atividadeController.itemsAvailableSelectOne}" />
                     </h:selectOneMenu>
-
+                    <h:outputText value="#{atividadeController.selected.mensalidade}" title="#{bundle.ViewAlunoTitle_nome}"/>
                 </h:panelGrid>
                 <h:commandLink action="#{alunoController.matricular}" value="#{bundle.Matricular}"/>
                 <br />

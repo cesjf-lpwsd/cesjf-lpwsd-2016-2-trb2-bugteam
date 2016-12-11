@@ -46,9 +46,9 @@ public class AlunoTest {
     public void testGetNome() {
         System.out.println("getNome");
         Aluno instance = new Aluno();
-        String expResult = "";
+        instance.setNome("Filipe");
         String result = instance.getNome();
-        assertEquals(expResult, result);
+        assertEquals("Filipe", result);
     }
 
     /**
@@ -72,16 +72,10 @@ public class AlunoTest {
         Aluno instance = new Aluno();
         Atividade at = new Atividade();
         at.setNome("Volei");
-        List<Atividade> lat = new ArrayList<Atividade>();
+        List<Atividade> lat = new ArrayList<>();
         lat.add(at);
-        //List<Atividade> expResult = null;
-        //List<Atividade> result = instance.getAtividade();
-        lat.contains("Volei");
-        //assertEquals( lat.containsAll());
-       // assertArrayEquals("Volei", lat.);
-        // TODO review the generated test code and remove the default call to fail.
-      
-    
+        instance.setAtividades(lat);
+        assertTrue( instance.getAtividades().contains(at));
     }
 
     /**
@@ -95,63 +89,14 @@ public class AlunoTest {
         instance.setAtividades(atividade);
     }
 
-    /**
-     * Test of isIsTaxaMatriculaPaga method, of class Aluno.
-     */
-    @Test
-    public void testIsIsTaxaMatriculaPaga() {
-        System.out.println("isIsTaxaMatriculaPaga");
-        Aluno instance = new Aluno();
-        boolean expResult = false;
-        boolean result = instance.isTaxaMatriculaPaga();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of setIsTaxaMatriculaPaga method, of class Aluno.
-     */
-    @Test
-    public void testSetIsTaxaMatriculaPaga() {
-        System.out.println("setIsTaxaMatriculaPaga");
-        boolean isTaxaMatriculaPaga = false;
-        Aluno instance = new Aluno();
-        instance.setTaxaMatriculaPaga(isTaxaMatriculaPaga);
-    }
-
-    /**
-     * Test of isIsMensalidadePaga method, of class Aluno.
-     */
-    @Test
-    public void testIsIsMensalidadePaga() {
-        System.out.println("isIsMensalidadePaga");
-        Aluno instance = new Aluno();
-        boolean expResult = false;
-        boolean result = instance.isMensalidadePaga();
-        assertEquals(expResult, result);
-    }
-
-    /**
-     * Test of setIsMensalidadePaga method, of class Aluno.
-     */
-    @Test
-    public void testSetIsMensalidadePaga() {
-        System.out.println("setIsMensalidadePaga");
-        boolean isMensalidadePaga = false;
-        Aluno instance = new Aluno();
-        instance.setMensalidadePaga(isMensalidadePaga);
-
-    }
-
-    /**
-     * Test of getId method, of class Aluno.
-     */
     @Test
     public void testGetId() {
         System.out.println("getId");
         Aluno instance = new Aluno();
-        Long expResult = null;
+        instance.setId(5L);
+  
         Long result = instance.getId();
-        assertEquals(expResult, result);
+        assertEquals(instance.getId(), result);
     }
 
     /**
@@ -163,8 +108,7 @@ public class AlunoTest {
         Long id = 123L;
         Aluno instance = new Aluno();
         instance.setId(id);
-        assertEquals(123L, (long) instance.getId());
-        
+        assertEquals(123L, (long) instance.getId());   
     }
     
     @Test
@@ -195,28 +139,94 @@ public class AlunoTest {
         
         assertEquals(150.0d, nm.getValor(),0.0001d);
     }
-    @Test
-    public void testMensalidadeAberta(){
-        System.out.println("matricula de 150%");
-        Aluno a = new Aluno();
-        Atividade atv = new Atividade();
-        
-        atv.setMensalidade(100.0f);
-        a.matricula(atv);
-        Mensalidade nm = a.getMensalidades().get(0);
 
-       // assertFalse(nm.isPaga());
-    }
+    /**
+     * Test of getAtividades method, of class Aluno.
+     */
     @Test
-    public void testMensalidadePaga(){
-        System.out.println("matricula paga%");
-        Aluno a = new Aluno();
-        Atividade atv = new Atividade();
+    public void testGetAtividades() {
+        System.out.println("getAtividades");
+        Aluno instance = new Aluno();
+        instance.setNome("Filipe");
+        Atividade at =new Atividade();
+        at.setNome("Basket");
+        List<Atividade> expResult =  new ArrayList<>();
+        expResult.add(at);
+        instance.setAtividades(expResult);
+        List<Atividade> result = instance.getAtividades();
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of setAtividades method, of class Aluno.
+     */
+    @Test
+    public void testSetAtividades() {
+        System.out.println("setAtividades");
+        Atividade at = new Atividade();
+        at.setId(12L);
+        List<Atividade> atividades = new ArrayList<>();
+        atividades.add(at);
+        Aluno instance = new Aluno();
+        instance.setAtividades(atividades);
+        assertTrue(instance.getAtividades().contains(at));
+    }
+
+    /**
+     * Test of getMensalidades method, of class Aluno.
+     */
+    @Test
+    public void testGetMensalidades() {
+        System.out.println("getMensalidades");
+        Aluno instance = new Aluno();
+        Atividade at = new Atividade();
+        Mensalidade m = new Mensalidade(instance, at);
         
-        atv.setMensalidade(100.0f);
-        a.matricula(atv);
-        Mensalidade nm = a.getMensalidades().get(0);
-      //  a.paga(nm);
-       // assertTrue(nm.isPaga());
+        List<Mensalidade> lmen = new ArrayList();
+        lmen.add(m);
+        //List<Mensalidade> result = instance.getMensalidades();
+        assertTrue(lmen.contains(m));
+
+    }
+
+    /**
+     * Test of toString method, of class Aluno.
+     */
+    @Test
+    public void testToString() {
+        System.out.println("toString");
+        Aluno instance = new Aluno();
+        instance.setNome("Bruna");
+
+        String result = instance.toString();
+        assertEquals("Bruna", result);
+    
+    }
+
+    /**
+     * Test of hashCode method, of class Aluno.
+     */
+    @Test
+    public void testHashCode() {
+        System.out.println("hashCode");
+        Aluno instance = new Aluno();
+        int expResult = 553;
+        int result = instance.hashCode();
+        assertEquals(expResult, result);
+
+    }
+
+    /**
+     * Test of equals method, of class Aluno.
+     */
+    @Test
+    public void testEquals() {
+        System.out.println("equals");
+        Object obj = null;
+        Aluno instance = new Aluno();
+        boolean expResult = false;
+        boolean result = instance.equals(obj);
+        assertEquals(expResult, result);
+
     }
 }

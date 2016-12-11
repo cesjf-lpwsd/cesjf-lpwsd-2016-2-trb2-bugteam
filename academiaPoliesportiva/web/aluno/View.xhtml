@@ -17,8 +17,9 @@
                 <h:panelGrid columns="2">
                     <h:outputText value="#{bundle.ViewAlunoLabel_nome}"/>
                     <h:outputText value="#{alunoController.selected.nome}" title="#{bundle.ViewAlunoTitle_nome}"/>
+                    
                     <h:outputText value="#{bundle.ViewAlunoLabel_id}"/>
-                    <h:outputText value="#{alunoController.selected.id}" title="#{bundle.ViewAlunoTitle_id}"/>
+                    <h:outputText value="#{atividadeController.setCurrent(atividadeAtual)}" title="#{bundle.ViewAlunoTitle_id}"/>
 
                     <h:outputText value="Atividades:"/>
                     <br />
@@ -32,7 +33,9 @@
                                <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{alunoController.prepareView}" value="#{bundle.ListAlunoViewLink}"/>
+                            <h:commandLink action="#{alunoController.prepareListMensalidades}" value="Ver Mensalidades"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{alunoController.prepareCreateMensalidades}" value="Pagar Mensalidades"/>
                             <h:outputText value=" "/>
                         </h:column>
                     </h:dataTable>
