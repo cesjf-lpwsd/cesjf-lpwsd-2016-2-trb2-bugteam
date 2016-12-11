@@ -6,7 +6,9 @@
 package academiaPoliesportiva.model;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,31 +21,40 @@ import javax.persistence.Temporal;
  *
  * @author aluno
  */
-@Entity 
+@Entity
 public class Mensalidade implements Serializable {
-    @Id 
-    @GeneratedValue(strategy = GenerationType.AUTO) 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToOne
-    private Aluno aluno;
+    
     @ManyToOne
+    private Aluno aluno;
+    
+    @OneToOne
     private Atividade atividade;
     private float manutencao;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataVencimento;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataPagamento;
-    private boolean isFormaPagamento;
+    private boolean formaPagamento;
     private double valor;
-
+  
+    
     public Mensalidade() {
-    }      
-    public Mensalidade(Aluno a, Atividade b) {
-        this.aluno=a;
-        this.atividade=b;
     }
-    
-    
+
+    public Mensalidade(Aluno a, Atividade b) {// criar mensalidade
+        this.aluno = a;
+        this.atividade = b;
+    }
+     void paga(Aluno a) {
+        this.setDataPagamento(new Date());
+
+
+    }
+
     public Aluno getAluno() {
         return aluno;
     }
@@ -61,7 +72,7 @@ public class Mensalidade implements Serializable {
     }
 
     public float getManutencao() {
-        this.manutencao = atividade.getMensalidade() / 5;
+        this.manutencao = (float) (getValor() *0.2);
         return manutencao;
     }
 
@@ -74,21 +85,28 @@ public class Mensalidade implements Serializable {
     }
 
     public void setDataVencimento(Date dataVencimento) {
-        this.dataVencimento = dataVencimento;
+        Date d =new Date();
+           Calendar c = Calendar.getInstance();
+                  c.setTime(d);
+                  c.set(Calendar.MONTH, c.get(Calendar.MONTH) + 1);
+        
+
+        
+        this.dataVencimento = c.getTime();
     }
 
     /**
      * @return the FormaPagamento
      */
-    public boolean isIsFormaPagamento() {
-        return isFormaPagamento;
+    public boolean isFormaPagamento() {
+        return formaPagamento;
     }
 
     /**
-     * @param isFormaPagamento the FormaPagamento to set
+     * @param formaPagamento the FormaPagamento to set
      */
-    public void setIsFormaPagamento(boolean isFormaPagamento) {
-        this.isFormaPagamento = isFormaPagamento;
+    public void setFormaPagamento(boolean formaPagamento) {
+        this.formaPagamento = formaPagamento;
     }
 
     public Long getId() {
@@ -112,10 +130,33 @@ public class Mensalidade implements Serializable {
     }
 
     public void setDataPagamento(Date dataPagamento) {
-        this.dataPagamento = dataPagamento;
+      
+        this.dataPagamento = new Date();
     }
-    public boolean isPaga(){
-        return this.dataPagamento!=null;
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 17 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Mensalidade other = (Mensalidade) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
 
 }

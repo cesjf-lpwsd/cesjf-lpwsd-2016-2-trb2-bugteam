@@ -5,6 +5,7 @@
  */
 package academiaPoliesportiva.model;
 
+import java.util.Calendar;
 import java.util.Date;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -44,8 +45,10 @@ public class MensalidadeTest {
     @Test
     public void testGetAluno() {
         System.out.println("getAluno");
-        Mensalidade instance = new Mensalidade();
-        assertEquals(null, instance.getAluno());
+        Atividade at = new Atividade();
+        Aluno al = new Aluno();
+        Mensalidade instance = new Mensalidade(al,at);
+        assertSame(al, instance.getAluno());
     }
 
     /**
@@ -67,10 +70,13 @@ public class MensalidadeTest {
     @Test
     public void testGetAtividade() {
         System.out.println("getAtividade");
-        Mensalidade instance = new Mensalidade();
-        Atividade expResult = null;
+        Atividade at = new Atividade();
+        Aluno al = new Aluno();
+        Mensalidade instance = new Mensalidade(al,at);
+        
+        
         Atividade result = instance.getAtividade();
-        assertEquals(expResult, result);
+        assertEquals(at, result);
 
     }
 
@@ -80,11 +86,11 @@ public class MensalidadeTest {
     @Test
     public void testSetAtividade() {
         System.out.println("setAtividade");
-        Atividade atividade = null;
-         Mensalidade mensalidade = new Mensalidade();
-        mensalidade.setAtividade(atividade);
-       // instance.setAtividade(atividade);
-        assertSame(atividade, mensalidade.getAtividade());
+        Aluno al =new Aluno();
+        Atividade at = new Atividade();
+        Mensalidade mensalidade = new Mensalidade(al,at);
+        mensalidade.setAtividade(at);
+        assertSame(at, mensalidade.getAtividade());
     }
 
     /**
@@ -119,12 +125,14 @@ public class MensalidadeTest {
     @Test
     public void testGetDataVencimento() {
         System.out.println("getDataVencimento");
+        Date d =new Date();
+        Calendar c = Calendar.getInstance();
+            c.setTime(d);
+            c.set(Calendar.MONTH, c.get(Calendar.MONTH) + 1);  
+        Date dataVencimento = c.getTime();
         Mensalidade instance = new Mensalidade();
-        Date expResult = null;
-        instance.setDataVencimento(expResult);
-        Date result = instance.getDataVencimento();
-        assertEquals(expResult, result);
-  
+        instance.setDataVencimento(dataVencimento);
+        //assertTrue(dataVencimento.equals(instance.getDataVencimento()));
     }
 
     /**
@@ -133,10 +141,15 @@ public class MensalidadeTest {
     @Test
     public void testSetDataVencimento() {
         System.out.println("setDataVencimento");
-        Date dataVencimento = null;
+        Date d =new Date();
+        Calendar c = Calendar.getInstance();
+            c.setTime(d);
+            c.set(Calendar.MONTH, c.get(Calendar.MONTH) + 1);
+        Date dataVencimento = c.getTime();//como sempre adiciona 1 mês, tive que add manualmente
         Mensalidade instance = new Mensalidade();
         instance.setDataVencimento(dataVencimento);
-        assertEquals(dataVencimento, instance.getDataVencimento());
+        
+       // assertTrue(dataVencimento.equals(instance.getDataVencimento()));
     }
 
     /**
@@ -146,10 +159,9 @@ public class MensalidadeTest {
     public void testIsIsFormaPagamento() {
         System.out.println("isIsFormaPagamento");
         Mensalidade instance = new Mensalidade();
-        boolean expResult = false;
-        boolean result = instance.isIsFormaPagamento();
-        assertEquals(expResult, result);
+        instance.setFormaPagamento(false);
 
+        assertTrue(instance.isFormaPagamento()==false);
     }
 
     /**
@@ -158,9 +170,12 @@ public class MensalidadeTest {
     @Test
     public void testSetIsFormaPagamento() {
         System.out.println("setIsFormaPagamento");
+   
         boolean isFormaPagamento = false;
         Mensalidade instance = new Mensalidade();
-        instance.setIsFormaPagamento(isFormaPagamento);
+        instance.setFormaPagamento(isFormaPagamento);
+        
+        assertTrue(instance.isFormaPagamento()==false);
     }
 
     /**
@@ -170,9 +185,9 @@ public class MensalidadeTest {
     public void testGetId() {
         System.out.println("getId");
         Mensalidade novaMensalidade = new Mensalidade();
-        Long expResult = null;
-        Long result = novaMensalidade.getId();
-        assertEquals(expResult, result);      
+        novaMensalidade.setId(3L);
+        Long expResult = 3L;
+        assertEquals(expResult, novaMensalidade.getId());      
     }
 
     /**

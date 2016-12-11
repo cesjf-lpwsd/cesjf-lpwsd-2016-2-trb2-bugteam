@@ -7,40 +7,54 @@ package academiaPoliesportiva.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author aluno
  */
-@Entity 
+@Entity
 public class Aluno implements Serializable {
-    @Id 
-    @GeneratedValue(strategy = GenerationType.AUTO) 
-    private Long id;
-    private String nome; 
-    private List<Atividade> atividade;
-    private boolean isTaxaMatriculaPaga;
-    private boolean isMensalidadePaga;
-    private boolean isApto; //implementar
-    private List<Mensalidade> mensalidades;
-    private String testt;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    private String nome;
+    @ManyToMany( fetch = FetchType.EAGER)
+    private List<Atividade> atividades;
+    @OneToMany(cascade = CascadeType.REMOVE)
+    private final List<Mensalidade> mensalidades;
+    
     public Aluno() {
         nome = "";
-        atividade = new ArrayList<>();
-        mensalidades  =  new ArrayList<>();
+        atividades = new ArrayList<>();
+        mensalidades = new ArrayList<>();
     }
-    
-    public Aluno(String nome, Atividade atividade){
-        
-       
+    public void matricula(Atividade atv) {
+        this.getAtividades().add(atv);
+        Mensalidade nMensa = new Mensalidade();
+        nMensa.setAtividade(atv);
+        nMensa.setValor(atv.getMensalidade() * 1.5);
+        nMensa.setAluno(this);
+        nMensa.setDataPagamento(new Date());
+        nMensa.setDataVencimento(new Date());//adicionar 1 mes apos a data de pagamento
+        this.getMensalidades().add(nMensa);
     }
+
+   
+
     public String getNome() {
         return nome;
     }
@@ -49,28 +63,12 @@ public class Aluno implements Serializable {
         this.nome = nome;
     }
 
-    public List<Atividade> getAtividade() {
-        return atividade;
+    public List<Atividade> getAtividades() {
+        return atividades;
     }
 
-    public void setAtividade(List<Atividade> atividade) {
-        this.atividade = atividade;
-    }
-
-    public boolean isIsTaxaMatriculaPaga() {
-        return isTaxaMatriculaPaga;
-    }
-
-    public void setIsTaxaMatriculaPaga(boolean isTaxaMatriculaPaga) {
-        this.isTaxaMatriculaPaga = isTaxaMatriculaPaga;
-    }
-
-    public boolean isIsMensalidadePaga() {
-        return isMensalidadePaga;
-    }
-
-    public void setIsMensalidadePaga(boolean isMensalidadePaga) {
-        this.isMensalidadePaga = isMensalidadePaga;
+    public void setAtividades(List<Atividade> atividades) {
+        this.atividades = atividades;
     }
 
     public Long getId() {
@@ -81,41 +79,42 @@ public class Aluno implements Serializable {
         this.id = id;
     }
 
-    public boolean isIsApto() {
-        return isApto;
-    }
-     
-    
-    public void matricula(Atividade atv){
-        this.getAtividade().add(atv);
-        Mensalidade nMensa = new Mensalidade();
-        nMensa.setValor(atv.getMensalidade()*1.5);
-        nMensa.setAluno(this);
-        nMensa.setDataPagamento(new Date());
-        nMensa.setDataVencimento(new Date());//adicionar 1 mes apos a data de pagamento
-        this.isTaxaMatriculaPaga=true;
-        this.getMensalidades().add(nMensa);
-    }
-
     List<Mensalidade> getMensalidades() {
-       return this.mensalidades;
+        return this.mensalidades;
     }
 
-    void paga(Mensalidade msl) {
-        msl.setDataPagamento(new Date());
-    
+    @Override
+    public String toString() {
+        return nome ;
     }
 
-    public String getTestt() {
-        return testt;
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.id);
+        return hash;
     }
 
-    public void setTestt(String testt) {
-        this.testt = testt;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Aluno other = (Aluno) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
 
-
-
+  
+   
 
     
 }

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMensalidadeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditMensalidadeLabel_aluno}" for="aluno" />
+                    <h:selectOneMenu id="aluno" value="#{mensalidadeController.selected.aluno}" title="#{bundle.EditMensalidadeTitle_aluno}" >
+                        <f:selectItems value="#{alunoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditMensalidadeLabel_atividade}" for="atividade" />
+                    <h:inputText id="atividade" value="#{mensalidadeController.selected.atividade}" title="#{bundle.EditMensalidadeTitle_atividade}" />
+                    <h:outputLabel value="#{bundle.EditMensalidadeLabel_manutencao}" for="manutencao" />
+                    <h:inputText id="manutencao" value="#{mensalidadeController.selected.manutencao}" title="#{bundle.EditMensalidadeTitle_manutencao}" />
+                    <h:outputLabel value="#{bundle.EditMensalidadeLabel_dataVencimento}" for="dataVencimento" />
+                    <h:inputText id="dataVencimento" value="#{mensalidadeController.selected.dataVencimento}" title="#{bundle.EditMensalidadeTitle_dataVencimento}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditMensalidadeLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{mensalidadeController.selected.id}" title="#{bundle.EditMensalidadeTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditMensalidadeLabel_valor}" for="valor" />
+                    <h:inputText id="valor" value="#{mensalidadeController.selected.valor}" title="#{bundle.EditMensalidadeTitle_valor}" />
+                    <h:outputLabel value="#{bundle.EditMensalidadeLabel_dataPagamento}" for="dataPagamento" />
+                    <h:inputText id="dataPagamento" value="#{mensalidadeController.selected.dataPagamento}" title="#{bundle.EditMensalidadeTitle_dataPagamento}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                </h:panelGrid>
+                <h:commandLink action="#{mensalidadeController.update}" value="#{bundle.EditMensalidadeSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditMensalidadeViewLink}"/>
+                <br />
+                <h:commandLink action="#{mensalidadeController.prepareList}" value="#{bundle.EditMensalidadeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditMensalidadeIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
